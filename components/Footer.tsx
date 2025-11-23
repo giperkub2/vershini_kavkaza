@@ -28,7 +28,7 @@ export const Footer: React.FC = () => {
             </li>
             <li className="flex items-center text-slate-400">
               <span className="w-5 mr-3 text-center">📍</span>
-              <span>г. Краснодар, гараж за заправкой лукойл
+              <span>г. Краснодар, гараж за заправкой лукойл</span>
             </li>
           </ul>
         </div>
