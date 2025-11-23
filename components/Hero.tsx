@@ -7,15 +7,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onExplore }) => {
   return (
-    <div className="relative h-screen w-full overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-105 transition-transform duration-[20s] hover:scale-110"
-        style={{ backgroundImage: "url('https://picsum.photos/id/1036/1920/1080')" }} // Using a snowy mountain placeholder
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-slate-900/80"></div>
-      </div>
-
+    <div className="relative h-screen w-full overflow-hidden flex flex-col justify-center items-center">
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8">
         <div className="animate-fade-in-up space-y-6">
@@ -24,11 +16,11 @@ export const Hero: React.FC<HeroProps> = ({ onExplore }) => {
             <span>Выезд из Краснодара</span>
           </div>
           
-          <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white font-bold leading-tight tracking-tight drop-shadow-lg">
+          <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white font-bold leading-tight tracking-tight drop-shadow-xl">
             Душа <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-cyan-300">Кавказа</span>
           </h1>
           
-          <p className="max-w-2xl mx-auto text-lg sm:text-xl md:text-2xl text-slate-200 font-light leading-relaxed">
+          <p className="max-w-2xl mx-auto text-lg sm:text-xl md:text-2xl text-slate-100 font-light leading-relaxed drop-shadow-md">
             Авторские туры в горы. Открой для себя величие вершин, чистоту рек и древнюю историю.
           </p>
 

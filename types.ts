@@ -1,3 +1,8 @@
+export interface Weather {
+  temp: number;
+  condition: string;
+}
+
 export interface Destination {
   id: string;
   title: string;
@@ -7,6 +12,7 @@ export interface Destination {
   difficulty: 'Легкий' | 'Средний' | 'Сложный';
   images: string[];
   features: string[];
+  weather: Weather;
 }
 
 export interface BookingRequest {

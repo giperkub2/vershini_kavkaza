@@ -13,7 +13,8 @@ export const DESTINATIONS: Destination[] = [
       'https://picsum.photos/id/1036/800/600',
       'https://picsum.photos/id/1015/800/600'
     ],
-    features: ['Канатная дорога', 'Озеро Туманлы-Кель', 'Тебердинский заповедник']
+    features: ['Канатная дорога', 'Озеро Туманлы-Кель', 'Тебердинский заповедник'],
+    weather: { temp: 8, condition: 'Облачно' }
   },
   {
     id: 'arkhyz',
@@ -27,7 +28,8 @@ export const DESTINATIONS: Destination[] = [
       'https://picsum.photos/id/1016/800/600',
       'https://picsum.photos/id/1040/800/600'
     ],
-    features: ['Софийские водопады', 'Лик Христа', 'Рафтинг']
+    features: ['Софийские водопады', 'Лик Христа', 'Рафтинг'],
+    weather: { temp: 15, condition: 'Солнечно' }
   },
   {
     id: 'elbrus',
@@ -41,7 +43,8 @@ export const DESTINATIONS: Destination[] = [
       'https://picsum.photos/id/1043/800/600',
       'https://picsum.photos/id/1044/800/600'
     ],
-    features: ['Эльбрус (3847м)', 'Поляна Нарзанов', 'Озеро Гижгит']
+    features: ['Эльбрус (3847м)', 'Поляна Нарзанов', 'Озеро Гижгит'],
+    weather: { temp: -2, condition: 'Снег' }
   },
   {
     id: 'lago-naki',
@@ -55,7 +58,8 @@ export const DESTINATIONS: Destination[] = [
       'https://picsum.photos/id/1050/800/600',
       'https://picsum.photos/id/1047/800/600'
     ],
-    features: ['Большая Азишская пещера', 'Хаджохская теснина', 'Термальные источники']
+    features: ['Большая Азишская пещера', 'Хаджохская теснина', 'Термальные источники'],
+    weather: { temp: 18, condition: 'Ясно' }
   },
    {
     id: 'digora',
@@ -69,7 +73,8 @@ export const DESTINATIONS: Destination[] = [
       'https://picsum.photos/id/1024/800/600',
       'https://picsum.photos/id/1025/800/600'
     ],
-    features: ['Замок Фрегат', 'Водопад Три Сестры', 'Национальный парк Алания']
+    features: ['Замок Фрегат', 'Водопад Три Сестры', 'Национальный парк Алания'],
+    weather: { temp: 12, condition: 'Дождь' }
   }
 ];
 
