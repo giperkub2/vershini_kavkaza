@@ -1,3 +1,4 @@
+
 import { Destination } from './types';
 
 export const DESTINATIONS: Destination[] = [
@@ -14,7 +15,8 @@ export const DESTINATIONS: Destination[] = [
       'https://picsum.photos/id/1015/800/600'
     ],
     features: ['Канатная дорога', 'Озеро Туманлы-Кель', 'Тебердинский заповедник'],
-    weather: { temp: 8, condition: 'Облачно' }
+    weather: { temp: 8, condition: 'Облачно' },
+    coordinates: { lat: 43.2925, lng: 41.6258 }
   },
   {
     id: 'arkhyz',
@@ -29,7 +31,8 @@ export const DESTINATIONS: Destination[] = [
       'https://picsum.photos/id/1040/800/600'
     ],
     features: ['Софийские водопады', 'Лик Христа', 'Рафтинг'],
-    weather: { temp: 15, condition: 'Солнечно' }
+    weather: { temp: 15, condition: 'Солнечно' },
+    coordinates: { lat: 43.5619, lng: 41.2825 }
   },
   {
     id: 'elbrus',
@@ -44,7 +47,8 @@ export const DESTINATIONS: Destination[] = [
       'https://picsum.photos/id/1044/800/600'
     ],
     features: ['Эльбрус (3847м)', 'Поляна Нарзанов', 'Озеро Гижгит'],
-    weather: { temp: -2, condition: 'Снег' }
+    weather: { temp: -2, condition: 'Снег' },
+    coordinates: { lat: 43.2500, lng: 42.5000 }
   },
   {
     id: 'lago-naki',
@@ -59,7 +63,8 @@ export const DESTINATIONS: Destination[] = [
       'https://picsum.photos/id/1047/800/600'
     ],
     features: ['Большая Азишская пещера', 'Хаджохская теснина', 'Термальные источники'],
-    weather: { temp: 18, condition: 'Ясно' }
+    weather: { temp: 18, condition: 'Ясно' },
+    coordinates: { lat: 44.0772, lng: 40.0039 }
   },
    {
     id: 'digora',
@@ -74,7 +79,8 @@ export const DESTINATIONS: Destination[] = [
       'https://picsum.photos/id/1025/800/600'
     ],
     features: ['Замок Фрегат', 'Водопад Три Сестры', 'Национальный парк Алания'],
-    weather: { temp: 12, condition: 'Дождь' }
+    weather: { temp: 12, condition: 'Дождь' },
+    coordinates: { lat: 42.9069, lng: 43.8569 }
   }
 ];
 

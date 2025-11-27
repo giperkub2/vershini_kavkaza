@@ -1,3 +1,4 @@
+
 export interface Weather {
   temp: number;
   condition: string;
@@ -13,6 +14,10 @@ export interface Destination {
   images: string[];
   features: string[];
   weather: Weather;
+  coordinates: {
+    lat: number;
+    lng: number;
+  };
 }
 
 export interface BookingRequest {

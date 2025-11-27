@@ -1,5 +1,6 @@
+
 import React, { useState, useEffect, useRef } from 'react';
-import { Destination } from '../types';
+import { Destination, Weather } from '../types';
 import { Clock, Mountain, ChevronLeft, ChevronRight, CheckCircle, Share2, Sun, Cloud, CloudRain, CloudSnow } from 'lucide-react';
 
 interface DestinationCardProps {
@@ -22,6 +23,7 @@ const WhatsAppIcon = () => (
 export const DestinationCard: React.FC<DestinationCardProps> = ({ destination, onBook }) => {
   const [currentImageIdx, setCurrentImageIdx] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [currentWeather, setCurrentWeather] = useState<Weather>(destination.weather);
   const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -41,6 +43,46 @@ export const DestinationCard: React.FC<DestinationCardProps> = ({ destination, o
 
     return () => observer.disconnect();
   }, []);
+
+  // Fetch real-time weather
+  useEffect(() => {
+    if (destination.coordinates) {
+      const fetchWeather = async () => {
+        try {
+          const res = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${destination.coordinates.lat}&longitude=${destination.coordinates.lng}&current_weather=true`
+          );
+          if (!res.ok) throw new Error('Failed to fetch weather');
+          const data = await res.json();
+          
+          if (data.current_weather) {
+            setCurrentWeather({
+              temp: Math.round(data.current_weather.temperature),
+              condition: getWeatherDescription(data.current_weather.weathercode)
+            });
+          }
+        } catch (error) {
+          console.error('Error fetching weather:', error);
+          // Fallback to static data is already set in initial state
+        }
+      };
+      
+      fetchWeather();
+    }
+  }, [destination.coordinates]);
+
+  const getWeatherDescription = (code: number): string => {
+    // WMO Weather interpretation codes
+    if (code === 0) return 'Ясно';
+    if (code >= 1 && code <= 3) return 'Облачно';
+    if (code === 45 || code === 48) return 'Туман';
+    if (code >= 51 && code <= 67) return 'Дождь';
+    if (code >= 71 && code <= 77) return 'Снег';
+    if (code >= 80 && code <= 82) return 'Ливень';
+    if (code >= 85 && code <= 86) return 'Снег';
+    if (code >= 95) return 'Гроза';
+    return 'Ясно';
+  };
 
   const nextImage = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -69,9 +111,10 @@ export const DestinationCard: React.FC<DestinationCardProps> = ({ destination, o
   const getWeatherIcon = (condition: string) => {
     const lower = condition.toLowerCase();
     if (lower.includes('солн') || lower.includes('ясно')) return <Sun className="w-4 h-4 text-amber-500" />;
-    if (lower.includes('дождь')) return <CloudRain className="w-4 h-4 text-blue-500" />;
+    if (lower.includes('дождь') || lower.includes('ливень')) return <CloudRain className="w-4 h-4 text-blue-500" />;
     if (lower.includes('снег')) return <CloudSnow className="w-4 h-4 text-sky-300" />;
-    if (lower.includes('облач')) return <Cloud className="w-4 h-4 text-slate-500" />;
+    if (lower.includes('облач') || lower.includes('туман')) return <Cloud className="w-4 h-4 text-slate-500" />;
+    if (lower.includes('гроз')) return <CloudRain className="w-4 h-4 text-purple-500" />;
     return <Sun className="w-4 h-4 text-amber-500" />;
   };
 
@@ -106,10 +149,10 @@ export const DestinationCard: React.FC<DestinationCardProps> = ({ destination, o
 
           {/* Weather Widget */}
           <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-xl text-xs font-bold text-slate-700 shadow-lg flex items-center gap-2 border border-white/50">
-            {getWeatherIcon(destination.weather.condition)}
-            <span className="text-sm">{destination.weather.temp > 0 ? '+' : ''}{destination.weather.temp}°C</span>
+            {getWeatherIcon(currentWeather.condition)}
+            <span className="text-sm">{currentWeather.temp > 0 ? '+' : ''}{currentWeather.temp}°C</span>
             <span className="hidden sm:inline-block text-slate-500 font-normal border-l border-slate-200 pl-2 ml-0.5">
-              {destination.weather.condition}
+              {currentWeather.condition}
             </span>
           </div>
 
